@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.cloud.tools:appengine-gradle-plugin:1.3.3'
+    }
+}
+
 plugins {
     id "io.spring.dependency-management" version "1.0.6.RELEASE"
     id "com.github.johnrengelman.shadow" version "4.0.2"
@@ -7,6 +17,7 @@ plugins {
 
 apply plugin:"application"
 apply plugin:"java"
+apply plugin: 'com.google.cloud.tools.appengine'
 
 version "0.1"
 group "backend"
@@ -48,4 +59,15 @@ mainClassName = "backend.Application"
 tasks.withType(JavaCompile){
     options.encoding = "UTF-8"
     options.compilerArgs.add('-parameters')
+}
+
+appengine {
+    stage {
+        artifact = 'build/libs/backend-0.1-all.jar'
+    }
+    deploy {
+        stopPreviousVersion = true
+        promote = true
+        project = 'oci-micronaut'
+    }
 }
