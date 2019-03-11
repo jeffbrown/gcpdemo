@@ -1,3 +1,5 @@
 micronaut:
     application:
         name: frontend
+backend:
+    url: http://localhost:8082
