@@ -9,6 +9,6 @@ public class HelloController {
 
     @Get("/hello/{name}")
     public String hello(String name) {
-        return "Hello " + name;
+        return "GCP Hello " + name;
     }
 }
