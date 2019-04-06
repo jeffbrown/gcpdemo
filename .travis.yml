@@ -1,0 +1,10 @@
+language: java
+jdk:
+- openjdk8
+before_script:
+- rm -rf build
+script: ./travis-build.sh
+env:
+  global:
+  - GIT_NAME="Jeff Scott Brown"
+  - GIT_EMAIL="brownj@objectcomputing.com"
