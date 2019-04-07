@@ -3,8 +3,11 @@ jdk:
 - openjdk8
 before_script:
 - rm -rf build
-script: ./travis-build.sh
+script: "./travis-build.sh"
 env:
   global:
   - GIT_NAME="Jeff Scott Brown"
   - GIT_EMAIL="brownj@objectcomputing.com"
+before_install:
+- openssl aes-256-cbc -K $encrypted_ef5a776b89d9_key -iv $encrypted_ef5a776b89d9_iv
+  -in client-secret.json.enc -out client-secret.json -d
